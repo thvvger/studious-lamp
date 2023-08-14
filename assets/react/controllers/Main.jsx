@@ -180,7 +180,7 @@ const Main = () => {
 
         <div className="card">
             <div className="card-header">
-                <h5>Pointage</h5>
+                <h5>Elaboration du cout de production</h5>
             </div>
             <div className="card-body">
                 <div className="accordion" id="accordionExample">
