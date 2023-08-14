@@ -22,5 +22,9 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
+    },
+    "dependencies": {
+        "react-select": "^5.7.4",
+        "react-toastify": "^9.1.3"
     }
 }

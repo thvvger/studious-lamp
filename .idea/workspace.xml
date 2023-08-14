@@ -5,22 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d3a77fe-fe0a-4367-b26d-0e92b099e72a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/controllers/hello_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/react/controllers/Hello.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeception.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/react/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/react/controllers/Main.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/nelmio_cors.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes/api_platform.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ApiResource/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Materiau.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/MateriauPointe.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Materiel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/MaterielPointe.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Personnel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/PersonnelPointe.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Pointage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Unite.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/MateriauPointeRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/MateriauRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/MaterielPointeRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/MaterielRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/PersonnelPointeRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/PersonnelRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/PointageRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/UniteRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/main.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/react/controllers/Hello.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +53,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php">
     <include_path>
@@ -166,6 +189,9 @@
       <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/ux-react" />
       <path value="$PROJECT_DIR$/vendor/symfony/stimulus-bundle" />
+      <path value="$PROJECT_DIR$/vendor/api-platform/core" />
+      <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/negotiation" />
     </include_path>
   </component>
   <component name="ProjectId" id="2TvTEMOeO06l0DIpgG2oVE5PE7b" />
@@ -179,16 +205,19 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/thvvger/Documents/sites/net2all/magmaerp",
+    "last_opened_file_path": "/home/thvvger/Documents/sites/testMichael",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "Symfony2.SettingsForm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -208,6 +237,7 @@
       <updated>1691922441541</updated>
       <workItem from="1691922442769" duration="105000" />
       <workItem from="1691934150247" duration="654000" />
+      <workItem from="1692002751029" duration="17778000" />
     </task>
     <servers />
   </component>
