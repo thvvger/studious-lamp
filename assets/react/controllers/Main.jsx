@@ -20,6 +20,10 @@ const Main = () => {
 
     const [tabArray, setTabArray] = useState([]);
 
+    const [totalMateriaux, setTotalMateriaux] = useState(0);
+    const [totalMateriels, setTotalMateriels] = useState(0);
+    const [totalPersonnels, setTotalPersonnels] = useState(0);
+
     useEffect(() => {
         loadData();
     }, []);
@@ -175,12 +179,144 @@ const Main = () => {
             })
     }
 
+    const handleMatiereChange = (item, type) => {
+        const materierePointe = {
+            id: item.value,
+            libelle: item.label,
+            unite: "KG",
+            quantite: 0,
+            prixUnitaire: 0
+        }
+
+        switch (type) {
+            case "MATERIAUX":
+                //item already exist
+                if (materiauPointe.find(element => element.id === item.value)) {
+                    toast.error("Cet élément existe déjà dans le tableau !");
+                    return;
+                }
+
+                setMateriauPointe([...materiauPointe, materierePointe]);
+                break;
+            case "MATERIELS":
+
+                if (materielPointe.find(element => element.id === item.value)) {
+                    toast.error("Cet élément existe déjà dans le tableau !");
+                    return;
+                }
+                setMaterielPointe([...materielPointe, materierePointe]);
+                break;
+            case "PERSONNELS":
+
+                if (personnelPointe.find(element => element.id === item.value)) {
+                    toast.error("Cet élément existe déjà dans le tableau !");
+                    return;
+                }
+                setPersonnelPointe([...personnelPointe, materierePointe]);
+        }
+    }
+
+    const handleQteChange = (id, value, type) => {
+        switch (type) {
+            case "MATERIAUX":
+                setMateriauPointe(materiauPointe.map(item => {
+                    if (item.id === id) {
+                        item.quantite = parseFloat(value);
+                        item.montant = item.quantite * item.prixUnitaire;
+                    }
+
+                    return item;
+                }))
+
+                setTotalMateriaux(materiauPointe.reduce((a, b) => a + (b['montant'] || 0), 0));
+
+                break;
+            case "MATERIELS":
+                setMaterielPointe(materielPointe.map(item => {
+                    if (item.id === id) {
+                        item.quantite = parseFloat(value);
+                        item.montant = item.quantite * item.prixUnitaire;
+                    }
+
+                    return item;
+                }))
+
+                setTotalMateriels(materielPointe.reduce((a, b) => a + (b['montant'] || 0), 0));
+                break;
+            case "PERSONNELS":
+                setPersonnelPointe(personnelPointe.map(item => {
+                    if (item.id === id) {
+                        item.quantite = parseFloat(value);
+                        item.montant = item.quantite * item.prixUnitaire;
+                    }
+
+                    return item;
+                }))
+
+                setTotalPersonnels(personnelPointe.reduce((a, b) => a + (b['montant'] || 0), 0));
+                break;
+        }
+    }
+
+    const handlePrixUnitaireChange = (id, value, type) => {
+        switch (type) {
+            case "MATERIAUX":
+                setMateriauPointe(materiauPointe.map(item => {
+                    if (item.id === id) {
+                        item.prixUnitaire = parseFloat(value);
+                        item.montant = item.quantite * item.prixUnitaire;
+                    }
+
+                    return item;
+                }))
+
+                setTotalMateriaux(materiauPointe.reduce((a, b) => a + (b['montant'] || 0), 0));
+                break;
+            case "MATERIELS":
+                setMaterielPointe(materielPointe.map(item => {
+                    if (item.id === id) {
+                        item.prixUnitaire = parseFloat(value);
+                        item.montant = item.quantite * item.prixUnitaire;
+                    }
+
+                    return item;
+                }))
+
+                setTotalMateriels(materielPointe.reduce((a, b) => a + (b['montant'] || 0), 0));
+                break;
+            case "PERSONNELS":
+                setPersonnelPointe(personnelPointe.map(item => {
+                    if (item.id === id) {
+                        item.prixUnitaire = parseFloat(value);
+                        item.montant = item.quantite * item.prixUnitaire;
+                    }
+
+                    return item;
+                }))
+
+                setTotalPersonnels(personnelPointe.reduce((a, b) => a + (b['montant'] || 0), 0));
+                break;
+        }
+
+        setTotalMateriaux(materiauPointe.reduce((a, b) => a + (b['montant'] || 0), 0));
+    }
+
     return <>
         <ToastContainer position={'top-left'} autoClose={5000} theme={'dark'}/>
 
         <div className="card">
-            <div className="card-header">
+            <div className="card-header d-flex flex-row">
                 <h5>Elaboration du cout de production</h5>
+
+                <div className="row ms-auto g-1 d-flex align-items-end">
+                    <div className="col-8">
+                        <label htmlFor="numero">Numéro de cout de production</label>
+                        <input type="text" id="numero" className="form-control"/>
+                    </div>
+                    <div className="col-4">
+                        <button className="btn btn-success">Charger</button>
+                    </div>
+                </div>
             </div>
             <div className="card-body">
                 <div className="accordion" id="accordionExample">
@@ -196,7 +332,9 @@ const Main = () => {
                             <div className="accordion-body">
                                 <div className="row g-1">
                                     <div className="col-4">
-                                        <Select options={materiaux}/>
+                                        <Select onChange={(item) => {
+                                            handleMatiereChange(item, 'MATERIAUX')
+                                        }} options={materiaux}/>
                                     </div>
                                 </div>
 
@@ -205,29 +343,54 @@ const Main = () => {
                                     <tr>
                                         <th>Matériaux</th>
                                         <th>Unité</th>
-                                        <th>Quantité</th>
-                                        <th>Prix Unitaire</th>
+                                        <th style={{width: "15%"}}>Quantité</th>
+                                        <th style={{width: "15%"}}>Prix Unitaire</th>
+                                        <th>Montant</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {
                                         materiauPointe.length > 0
-                                            ? materiauPointe.map((item, index) => {
-                                                return (
-                                                    <tr key={index}>
-                                                        <td>{item.libelle}</td>
-                                                        <td>{item.unite}</td>
-                                                        <td>{item.quantite}</td>
-                                                        <td>{item.prixUnitaire}</td>
-                                                        <td>
-                                                            <button className="btn btn-sm btn-danger"><i
-                                                                className="fa fa-minus"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            })
+                                            ? <>
+                                                {
+                                                    materiauPointe.map((item, index) => {
+                                                        return (
+                                                            <tr key={index}>
+                                                                <td>{item.libelle}</td>
+                                                                <td>{item.unite}</td>
+                                                                <td>
+                                                                    <input type="number"
+                                                                           value={item.quantite}
+                                                                           onChange={(event) => {
+                                                                               handleQteChange(item.id, event.target.value, 'MATERIAUX')
+                                                                           }}
+                                                                    />
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number"
+                                                                           value={item.prixUnitaire}
+                                                                           onChange={(event) => {
+                                                                               handlePrixUnitaireChange(item.id, event.target.value, 'MATERIAUX')
+                                                                           }}
+                                                                    />
+                                                                </td>
+                                                                <td>{item.montant}</td>
+                                                                <td>
+                                                                    <button className="btn btn-sm btn-danger"><i
+                                                                        className="fa fa-minus"></i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        )
+                                                    })
+                                                }
+
+                                                <tr>
+                                                    <td colSpan="4" className="text-end">Total</td>
+                                                    <td colSpan={2}>{totalMateriaux}</td>
+                                                </tr>
+                                            </>
                                             : <tr>
                                                 <td colSpan="5">Aucun matériau pointé</td>
                                             </tr>
@@ -248,7 +411,9 @@ const Main = () => {
                             <div className="accordion-body">
                                 <div className="row g-1">
                                     <div className="col-4">
-                                        <Select options={materiels}/>
+                                        <Select onChange={(item) => {
+                                            handleMatiereChange(item, 'MATERIELS')
+                                        }} options={materiels}/>
                                     </div>
                                 </div>
 
@@ -257,29 +422,55 @@ const Main = () => {
                                     <tr>
                                         <th>Matériels</th>
                                         <th>Unité</th>
-                                        <th>Quantité</th>
-                                        <th>Prix Unitaire</th>
+                                        <th style={{width: "15%"}}>Quantité</th>
+                                        <th style={{width: "15%"}}>Prix Unitaire</th>
+                                        <th>Montant</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {
                                         materielPointe.length > 0
-                                            ? materielPointe.map((item, index) => {
-                                                return (
-                                                    <tr key={index}>
-                                                        <td>{item.libelle}</td>
-                                                        <td>{item.unite}</td>
-                                                        <td>{item.quantite}</td>
-                                                        <td>{item.prixUnitaire}</td>
-                                                        <td>
-                                                            <button className="btn btn-sm btn-danger"><i
-                                                                className="fa fa-minus"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            })
+                                            ? <>
+                                                {
+                                                    materielPointe.map((item, index) => {
+                                                        return (
+                                                            <tr key={index}>
+                                                                <td>{item.libelle}</td>
+                                                                <td>{item.unite}</td>
+                                                                <td>
+                                                                    <input type="number"
+                                                                           value={item.quantite}
+                                                                           onChange={(event) => {
+                                                                               handleQteChange(item.id, event.target.value, 'MATERIELS')
+                                                                           }}
+                                                                    />
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number"
+                                                                           value={item.prixUnitaire}
+                                                                           onChange={(event) => {
+                                                                               handlePrixUnitaireChange(item.id, event.target.value, 'MATERIELS')
+                                                                           }}
+                                                                    />
+                                                                </td>
+                                                                <td>{item.montant}</td>
+                                                                <td>
+                                                                    <button className="btn btn-sm btn-danger"><i
+                                                                        className="fa fa-minus"></i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        )
+                                                    })
+                                                }
+
+                                                <tr>
+                                                    <td colSpan="4" className="text-end">Total</td>
+                                                    <td colSpan={2}>{totalMateriels}</td>
+                                                </tr>
+
+                                            </>
                                             : <tr>
                                                 <td colSpan="5">Aucun matériel pointé</td>
                                             </tr>
@@ -296,11 +487,14 @@ const Main = () => {
                                 Personnels
                             </button>
                         </h2>
-                        <div id="collapseThree" className="accordion-collapse collapse show" aria-labelledby="headingThree">
+                        <div id="collapseThree" className="accordion-collapse collapse show"
+                             aria-labelledby="headingThree">
                             <div className="accordion-body">
                                 <div className="row g-1">
                                     <div className="col-4">
-                                        <Select options={personnels}/>
+                                        <Select onChange={(item) => {
+                                            handleMatiereChange(item, 'PERSONNELS')
+                                        }} options={personnels}/>
                                     </div>
                                 </div>
 
@@ -309,33 +503,59 @@ const Main = () => {
                                     <tr>
                                         <th>Personnels</th>
                                         <th>Unité</th>
-                                        <th>Quantité</th>
-                                        <th>Prix Unitaire</th>
+                                        <th style={{width: "15%"}}>Quantité</th>
+                                        <th style={{width: "15%"}}>Prix Unitaire</th>
+                                        <th>Montant</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {
                                         personnelPointe.length > 0
-                                            ? personnelPointe.map((item, index) => {
-                                                return (
-                                                    <tr key={index}>
-                                                        <td>{item.libelle}</td>
-                                                        <td>{item.unite}</td>
-                                                        <td>{item.quantite}</td>
-                                                        <td>{item.prixUnitaire}</td>
-                                                        <td>
-                                                            <button className="btn btn-sm btn-danger"><i
-                                                                className="fa fa-minus"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            })
+                                            ? <>
+                                                {
+                                                    personnelPointe.map((item, index) => {
+                                                        return (
+                                                            <tr key={index}>
+                                                                <td>{item.libelle}</td>
+                                                                <td>{item.unite}</td>
+                                                                <td>
+                                                                    <input type="number"
+                                                                           value={item.quantite}
+                                                                           onChange={(event) => {
+                                                                               handleQteChange(item.id, event.target.value, 'PERSONNELS')
+                                                                           }}
+                                                                    />
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number"
+                                                                           value={item.prixUnitaire}
+                                                                           onChange={(event) => {
+                                                                               handlePrixUnitaireChange(item.id, event.target.value, 'PERSONNELS')
+                                                                           }}
+                                                                    />
+                                                                </td>
+                                                                <td>{item.montant}</td>
+                                                                <td>
+                                                                    <button className="btn btn-sm btn-danger"><i
+                                                                        className="fa fa-minus"></i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        )
+                                                    })
+                                                }
+
+                                                <tr>
+                                                    <td colSpan="4" className="text-end">Total</td>
+                                                    <td colSpan={2}>{totalPersonnels}</td>
+                                                </tr>
+                                            </>
                                             : <tr>
                                                 <td colSpan="5">Aucun personnel pointé</td>
                                             </tr>
                                     }
+
                                     </tbody>
                                 </table>
                             </div>
@@ -349,7 +569,6 @@ const Main = () => {
             </div>
             <div className="card-footer d-flex flex-row">
                 <button className="btn btn-info">Liste des pointages</button>
-                <button className="btn ms-1 btn-warning">Consulter un pointage</button>
 
                 <div className="ms-auto">
                     <button className="btn btn-primary"
