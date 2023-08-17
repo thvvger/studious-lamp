@@ -24,6 +24,8 @@ const Main = () => {
     const [totalMateriels, setTotalMateriels] = useState(0);
     const [totalPersonnels, setTotalPersonnels] = useState(0);
 
+    const [isSaving, setIsSaving] = useState(false);
+
     useEffect(() => {
         loadData();
     }, []);
@@ -185,7 +187,8 @@ const Main = () => {
             libelle: item.label,
             unite: "KG",
             quantite: 0,
-            prixUnitaire: 0
+            prixUnitaire: 0,
+            montant: 0
         }
 
         switch (type) {
@@ -301,6 +304,16 @@ const Main = () => {
         setTotalMateriaux(materiauPointe.reduce((a, b) => a + (b['montant'] || 0), 0));
     }
 
+    const saveCoutProduction = () => {
+        setIsSaving(true);
+
+
+        setTimeout(() => {
+            setIsSaving(false);
+            toast.success("Enregistrement effectué avec succès !");
+        }, 5000)
+    }
+
     return <>
         <ToastContainer position={'top-left'} autoClose={5000} theme={'dark'}/>
 
@@ -375,7 +388,7 @@ const Main = () => {
                                                                            }}
                                                                     />
                                                                 </td>
-                                                                <td>{item.montant}</td>
+                                                                <td>{item.montant.toLocaleString('fr-FR')} FCFA</td>
                                                                 <td>
                                                                     <button className="btn btn-sm btn-danger"><i
                                                                         className="fa fa-minus"></i>
@@ -388,7 +401,7 @@ const Main = () => {
 
                                                 <tr>
                                                     <td colSpan="4" className="text-end">Total</td>
-                                                    <td colSpan={2}>{totalMateriaux}</td>
+                                                    <td colSpan={2}>{totalMateriaux.toLocaleString('fr-FR')} FCFA</td>
                                                 </tr>
                                             </>
                                             : <tr>
@@ -454,7 +467,7 @@ const Main = () => {
                                                                            }}
                                                                     />
                                                                 </td>
-                                                                <td>{item.montant}</td>
+                                                                <td>{item.montant.toLocaleString('fr-FR')} FCFA</td>
                                                                 <td>
                                                                     <button className="btn btn-sm btn-danger"><i
                                                                         className="fa fa-minus"></i>
@@ -467,7 +480,7 @@ const Main = () => {
 
                                                 <tr>
                                                     <td colSpan="4" className="text-end">Total</td>
-                                                    <td colSpan={2}>{totalMateriels}</td>
+                                                    <td colSpan={2}>{totalMateriels.toLocaleString('fr-FR')} FCFA</td>
                                                 </tr>
 
                                             </>
@@ -535,7 +548,7 @@ const Main = () => {
                                                                            }}
                                                                     />
                                                                 </td>
-                                                                <td>{item.montant}</td>
+                                                                <td>{item.montant.toLocaleString('fr-FR')} FCFA</td>
                                                                 <td>
                                                                     <button className="btn btn-sm btn-danger"><i
                                                                         className="fa fa-minus"></i>
@@ -548,7 +561,7 @@ const Main = () => {
 
                                                 <tr>
                                                     <td colSpan="4" className="text-end">Total</td>
-                                                    <td colSpan={2}>{totalPersonnels}</td>
+                                                    <td colSpan={2}>{totalPersonnels.toLocaleString('fr-FR')} FCFA</td>
                                                 </tr>
                                             </>
                                             : <tr>
@@ -563,7 +576,18 @@ const Main = () => {
                     </div>
 
                     <div className="d-flex justify-content-center mt-2">
-                        <button className="btn btn-success">Enregistrer le pointage</button>
+                        <button disabled={isSaving} className="btn btn-success" onClick={() => {
+                            saveCoutProduction()
+                        }}>
+                            {
+                                isSaving
+                                    ? <>
+                                        <span className="spinner-border spinner-border-sm" role="status"
+                                              aria-hidden="true"></span> Enregistrement en cours...
+                                    </>
+                                    : "Enregistrer"
+                            }
+                        </button>
                     </div>
                 </div>
             </div>

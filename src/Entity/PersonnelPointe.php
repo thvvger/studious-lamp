@@ -23,7 +23,7 @@ class PersonnelPointe
     private ?float $qte = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Unite $unite = null;
 
     #[ORM\Column]
