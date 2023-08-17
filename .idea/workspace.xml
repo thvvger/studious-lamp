@@ -5,26 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d3a77fe-fe0a-4367-b26d-0e92b099e72a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-84fa39.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-84fa39.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/react/controllers/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/react/controllers/Main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/entrypoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/entrypoints.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-32fb05.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-32fb05.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-7d2f56.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-7d2f56.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-d03e02.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-ea419f.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ar-ea419f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/MateriauPointe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/MateriauPointe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/MaterielPointe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/MaterielPointe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/PersonnelPointe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/PersonnelPointe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +213,7 @@
       <workItem from="1692102593144" duration="3320000" />
       <workItem from="1692191874934" duration="596000" />
       <workItem from="1692257978685" duration="3238000" />
-      <workItem from="1692265374025" duration="228000" />
+      <workItem from="1692265374025" duration="729000" />
     </task>
     <servers />
   </component>
